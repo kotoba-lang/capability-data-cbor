@@ -1,6 +1,5 @@
 (ns kotoba.capability.data.cbor
-  "Importable contract for data/cbor."
-  (:require [kotoba.core.capability-repository :as repository]))
+  "Importable contract for data/cbor.")
 
 (def manifest
-  (repository/repository-manifest "data/cbor"))
+  {:schema "kotoba.capability.repository.v1", :capability/version 1, :capability/dependencies #{}, :capability/imports #{:cbor-encode}, :authority "kotoba-lang/kotoba-core-contracts", :capability/default-policy :autonomous, :capability/artifact {:format :wasm-component, :digest-required? true, :signature-required? true}, :capability/radicle-rid "rad:z24o5QsGMa3pkGEuqP48XSMDEPdFN", :capability/repository "kotoba-lang/capability-data-cbor", :capability/id "data/cbor", :capability/effects #{:codec}, :capability/provider-status :contract-only})
