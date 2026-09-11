@@ -18,5 +18,5 @@ Definition CID is unchanged by this provider landing.
 `:signature :reference-unsigned` is reference packaging.
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
