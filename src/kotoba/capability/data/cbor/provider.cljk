@@ -5,8 +5,8 @@
   as a definite-length CBOR map of UTF-8 text keys/values.
   ABI: (pairs-ptr, pairs-len, out-ptr, out-cap) → bytes-written|-1.
   Memory-backed injection is the embedder's job; this ns proves codec math."
-  (:import [java.io ByteArrayOutputStream]
-           [java.nio.charset StandardCharsets]))
+  (:import [java.io ByteArrayOutputStream])
+  (:require [kotoba.bytes :as kbytes]))
 
 (defn- cbor-head!
   [^ByteArrayOutputStream o major n]
@@ -21,7 +21,7 @@
 
 (defn- cbor-text!
   [^ByteArrayOutputStream o ^String s]
-  (let [b (.getBytes s StandardCharsets/UTF_8)]
+  (let [b (kbytes/utf8-bytes s)]
     (cbor-head! o 3 (alength b))
     (.write o b 0 (alength b))))
 
